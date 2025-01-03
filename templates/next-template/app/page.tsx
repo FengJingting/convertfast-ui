@@ -1,31 +1,24 @@
-import { HeroSection } from './hero-section'
-import { LogoCloud } from './logo-cloud'
-import { FeatureSection } from './feature-section'
-import { SocialProof } from './social-proof'
-import { CTA } from './cta'
-import { FAQ } from './faq'
-import { PricingSection } from './pricing'
-import { BlogSection } from './blog'
-import { BentoGrids } from './bento-grids'
-import NewsLetter from './news-letter'
-import Stats from './stats'
+import { Navbar } from './navbar';
+import { HeroSection } from './hero-section';
+import { HowItWorks } from './work-procedure';
+import { FeatureSection } from './feature-section';
+import { FAQ } from './faq';
+import { LectureSlideComponent } from './function-intro';
+import { ThemeProvider } from '@/components/theme-provider';
 
 function LandingPage() {
   return (
-    <>
-      <HeroSection />
-			<LogoCloud />
-			<FeatureSection />
-			<SocialProof />
-			<CTA />
-			<FAQ />
-			<PricingSection />
-			<BlogSection />
-			<BentoGrids/>
-			<NewsLetter />
-			<Stats />
-    </>
-  )
+    <ThemeProvider>
+      <>
+        <Navbar />
+        <HeroSection />
+        <HowItWorks />
+        <FeatureSection />
+        <FAQ />
+        <LectureSlideComponent />
+      </>
+    </ThemeProvider>
+  );
 }
 
-export default LandingPage
+export default LandingPage;

@@ -8,23 +8,44 @@ interface FeatureItemProps {
   isImageLeft: boolean;
 }
 
-const FeatureItem: FC<FeatureItemProps> = ({ title, description, imageUrl, isImageLeft }) => (
+const FeatureItem: FC<FeatureItemProps & { index: number }> = ({ title, description, imageUrl, isImageLeft, index }) => (
   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-24 items-center">
     {isImageLeft && (
-      <div className="order-1 md:order-1">
-        <img className="w-full max-w-2xl rounded-xl shadow-xl ring-1 ring-gray-400/10" src={imageUrl} alt={title} />
+      <div className="relative order-1 md:order-1">
+        <img
+          className="w-full max-w-2xl rounded-xl shadow-xl ring-1 ring-gray-400/10"
+          src={imageUrl}
+          alt={title}
+        />
       </div>
     )}
     <div className={`order-2 ${isImageLeft ? "md:order-2" : "md:order-1"}`}>
-      <h3 className="text-3xl font-bold tracking-tight text-primary sm:text-4xl">{title}</h3>
-      <p className="mt-6 text-lg leading-8 text-muted-foreground">{description}</p>
-      <div className="mt-4">
-        <Button variant="secondary">Learn more</Button>
-      </div>
+      <h3 className="text-2xl font-bold tracking-tight text-foreground sm:text-4xl">{title}</h3>
+      <p className="my-6 text-md/6 text-muted-foreground">{description}</p>
+      {!isImageLeft && (
+        <Button size="lg" className="w-full my-3 sm:w-auto" asChild>
+          <a href="#start">Get started free</a>
+        </Button>
+      )}
     </div>
     {!isImageLeft && (
-      <div className="order-1 md:order-2">
-        <img className="w-full max-w-2xl rounded-xl shadow-xl ring-1 ring-gray-400/10" src={imageUrl} alt={title} />
+      <div className="order-1 md:order-2 relative w-full max-w-2xl mx-auto">
+        <div className="relative">
+          <img
+            className="w-full rounded-xl shadow-xl ring-1 ring-gray-400/10"
+            src={imageUrl}
+            alt={title}
+          />
+          {index === 0 && (
+            <div className="absolute top-1/4 -right-1/4 w-1/3 aspect-square hidden lg:block">
+              <img
+                className="w-full h-full rounded-lg shadow-lg"
+                src="/image 15.png"
+                alt="Overlay"
+              />
+            </div>
+          )}
+        </div>
       </div>
     )}
   </div>
@@ -32,60 +53,42 @@ const FeatureItem: FC<FeatureItemProps> = ({ title, description, imageUrl, isIma
 
 const DEFAULT_ITEMS: FeatureItemProps[] = [
   {
-    title: "Rapid Landing Page Development",
+    title: "Extended Reference from Web",
     description:
-      "Build stunning landing pages in minutes with our intuitive drag-and-drop interface and pre-designed components.",
-    imageUrl: "https://ui.convertfa.st/images/graphic-walker-light-2.png",
-    isImageLeft: true,
-  },
-  {
-    title: "Customizable Templates",
-    description:
-      "Choose from a wide range of professionally designed templates and easily customize them to match your brand.",
-    imageUrl: "https://ui.convertfa.st/images/convertfast-ui-cli.png",
+      "Pixno can understand all kinds of information in your pictures, including text, chart like Venn or statistical graph.",
+    imageUrl: "/image 14.png", 
     isImageLeft: false,
   },
   {
-    title: "Code Export and Integration",
+    title: "Get More from Your Readings",
     description:
-      "Export clean, optimized code that seamlessly integrates with your existing projects, saving valuable development time.",
-    imageUrl: "https://ui.convertfa.st/images/convertfast-ui-light-demo.png",
+      "Pixno can enhance the credibility of generated notes by referencing relevant articles. It also expands your content through web searches.",
+    imageUrl: "/Rectangle 18.png", 
     isImageLeft: true,
   },
   {
-    title: "Responsive Design",
+    title: "Seamless Multi-Device Sync",
     description:
-      "Create mobile-friendly landing pages that look great on all devices, ensuring a consistent user experience.",
-    imageUrl: "https://ui.convertfa.st/images/convertfast-demo.png",
+      "Pixno can understand all kinds of information in your pictures, including text, chart like Venn or statistical graph.",
+    imageUrl: "/image 9.png", 
     isImageLeft: false,
   },
 ];
 
-interface FeatureSectionProps {
-  items?: FeatureItemProps[];
-  brand?: string;
-  title?: string;
-  description?: string;
-}
-
-export const FeatureSection: FC<FeatureSectionProps> = (props) => {
-  const {
-    items = DEFAULT_ITEMS,
-    brand = "ConvertFast",
-    title = "Everything you need to build landing pages",
-    description = "ConvertFast is a powerful landing page builder for developers, offering code templates and components inspired by shadcn. Create beautiful, functional landing pages quickly and efficiently.",
-  } = props;
-
+export const FeatureSection: FC = () => {
   return (
     <div className="py-16 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
-      <div className="mx-auto max-w-2xl text-center mb-16">
-        <div className="text-base font-semibold leading-7 text-primary">{brand}</div>
-        <h2 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-primary">{title}</h2>
-        <p className="mt-6 text-lg leading-8 text-muted-foreground">{description}</p>
+      <div className="mx-auto max-w-4xl text-center mb-16">
+        <h2 className="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-4xl text-foreground">
+          Images to knowledge
+        </h2>
+        <p className="mt-6 text-lg leading-8 text-muted-foreground">
+          Pixno transforms your smartphone into an AI-powered note-taking tool. Capture, organize, and enhance your ideas—all from your pocket.
+        </p>
       </div>
       <div className="mt-8 flex flex-col gap-16">
-        {items.map((feature, index) => (
-          <FeatureItem key={index} {...feature} />
+        {DEFAULT_ITEMS.map((feature, index) => (
+          <FeatureItem key={index} {...feature} index={index} />
         ))}
       </div>
     </div>
