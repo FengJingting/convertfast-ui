@@ -7,24 +7,36 @@ export const HeroSection: FC = () => {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center px-4 sm:px-6 lg:px-8">
         <div className="flex-1 text-center md:text-left">
           <h1 className="text-6xl font-bold leading-tight">
-            Efficiency <span className="relative inline-block">
-              <span className="absolute inset-x-0 bottom-0 h-[0.5em] bg-primary/80"></span>
-              <span className="relative">note generating</span>
-            </span> during class
+            Efficiency{" "}
+            <span className="relative inline-block">
+              <span
+                aria-hidden="true"
+                className="absolute inset-x-0 bottom-0 h-[0.5em] bg-primary/80"
+              ></span>
+              <span className="relative">note</span>
+            </span>{" "}
+            <span className="relative inline-block">
+              <span
+                aria-hidden="true"
+                className="absolute inset-x-0 bottom-0 h-[0.5em] bg-primary/80"
+              ></span>
+              <span className="relative">generating</span>
+            </span>{" "}
+            during class
           </h1>
 
-          <p className="mt-4 text-muted-foreground text-lg">
+          <p className="my-4 text-muted-foreground text-md/6">
             Photos can convert photos of your class notes, whiteboard content, and slides into structured digital notes. It’ll greatly improve your learning efficiency and enhance your learning experience.
           </p>
 
-          <Button size="lg" className="w-full my-3 sm:w-auto" asChild>
+          <Button size="lg" className="w-full my-3 sm:w-auto bg-foreground text-background" asChild>
             <a href="#start">
             Get started free
             </a>
           </Button>
 
-          <div className="mt-4 flex flex-col text-sm text-muted-foreground">
-            <div className="mb-3">Work with</div>
+          <div className="mt-4 flex flex-col text-muted-foreground">
+            <div className="mb-3 text-md/6">Work with</div>
             <div className="flex items-center space-x-2 justify-center md:justify-start">
               <a href="https://evernote.com" target="_blank" rel="noopener noreferrer">
                 <img src="/Vector.svg" alt="Evernote" className="w-8 h-8" />

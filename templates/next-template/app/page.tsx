@@ -3,7 +3,7 @@ import { HeroSection } from './hero-section';
 import { HowItWorks } from './work-procedure';
 import { FeatureSection } from './feature-section';
 import { FAQ } from './faq';
-import { LectureSlideComponent } from './function-intro';
+import { LectureSlideComponent } from './lecture-slide';
 import { ThemeProvider } from '@/components/theme-provider';
 
 function LandingPage() {

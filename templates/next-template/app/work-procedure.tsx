@@ -30,7 +30,7 @@ export const HowItWorks: FC = () => {
   const [currentStep, setCurrentStep] = useState(1);
 
   return (
-    <section className="bg-stone-100 dark:bg-stone-900 py-16">
+    <section className="bg-accent py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl font-bold text-center">How it works</h2>
 
@@ -61,7 +61,7 @@ export const HowItWorks: FC = () => {
           </div>
 
           <div className="hidden md:flex flex-col flex-1 justify-center">
-            <ol className="space-y-6 ">
+            <ol className="space-y-6">
               {steps.map((step) => (
                 <li
                   key={step.id}
@@ -87,14 +87,14 @@ export const HowItWorks: FC = () => {
                 </li>
               ))}
             </ol>
+            <div className="w-full mt-6">
+              <Button size="lg" className="bg-foreground text-background" asChild>
+                <a href="#start">Get started free</a>
+              </Button>
+            </div>
 
-            <Button
-              size="lg"
-              className="my-6 w-1/4"
-              asChild
-            >
-              <a href="#start" >Get started free</a>
-            </Button>
+            
+          
           </div>
         </div>
       </div>

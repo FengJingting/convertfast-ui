@@ -8,49 +8,6 @@ interface FeatureItemProps {
   isImageLeft: boolean;
 }
 
-const FeatureItem: FC<FeatureItemProps & { index: number }> = ({ title, description, imageUrl, isImageLeft, index }) => (
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-24 items-center">
-    {isImageLeft && (
-      <div className="relative order-1 md:order-1">
-        <img
-          className="w-full max-w-2xl rounded-xl shadow-xl ring-1 ring-gray-400/10"
-          src={imageUrl}
-          alt={title}
-        />
-      </div>
-    )}
-    <div className={`order-2 ${isImageLeft ? "md:order-2" : "md:order-1"}`}>
-      <h3 className="text-2xl font-bold tracking-tight text-foreground sm:text-4xl">{title}</h3>
-      <p className="my-6 text-md/6 text-muted-foreground">{description}</p>
-      {!isImageLeft && (
-        <Button size="lg" className="w-full my-3 sm:w-auto" asChild>
-          <a href="#start">Get started free</a>
-        </Button>
-      )}
-    </div>
-    {!isImageLeft && (
-      <div className="order-1 md:order-2 relative w-full max-w-2xl mx-auto">
-        <div className="relative">
-          <img
-            className="w-full rounded-xl shadow-xl ring-1 ring-gray-400/10"
-            src={imageUrl}
-            alt={title}
-          />
-          {index === 0 && (
-            <div className="absolute top-1/4 -right-1/4 w-1/3 aspect-square hidden lg:block">
-              <img
-                className="w-full h-full rounded-lg shadow-lg"
-                src="/image 15.png"
-                alt="Overlay"
-              />
-            </div>
-          )}
-        </div>
-      </div>
-    )}
-  </div>
-);
-
 const DEFAULT_ITEMS: FeatureItemProps[] = [
   {
     title: "Extended Reference from Web",
@@ -75,14 +32,48 @@ const DEFAULT_ITEMS: FeatureItemProps[] = [
   },
 ];
 
+const FeatureItem: FC<FeatureItemProps & { index: number }> = ({ title, description, imageUrl, isImageLeft, index }) => (
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-24 items-center">
+    {isImageLeft && (
+      <div className="relative order-1 md:order-1">
+        <img
+          className="w-full max-w-2xl rounded-xl shadow-xl ring-1 ring-gray-400/10"
+          src={imageUrl}
+          alt={title}
+        />
+      </div>
+    )}
+    <div className={`order-2 ${isImageLeft ? "md:order-2" : "md:order-1"} flex flex-col items-center md:items-start`}>
+      <h3 className="text-3xl font-bold tracking-tight text-foreground text-center md:text-left">{title}</h3>
+      <p className="my-6 text-md/6 text-muted-foreground text-center md:text-left">{description}</p>
+      {!isImageLeft && (
+        <Button size="lg" className="w-full my-3 sm:w-auto bg-foreground text-background" asChild>
+          <a href="#start">Get started free</a>
+        </Button>
+      )}
+    </div>
+    {!isImageLeft && (
+      <div className="order-1 md:order-2 relative w-full max-w-2xl mx-auto">
+        <div className="relative">
+          <img
+            className="w-full rounded-xl shadow-xl ring-1 ring-gray-400/10"
+            src={imageUrl}
+            alt={title}
+          />
+        </div>
+      </div>
+    )}
+  </div>
+);
+
 export const FeatureSection: FC = () => {
   return (
     <div className="py-16 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
       <div className="mx-auto max-w-4xl text-center mb-16">
-        <h2 className="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-4xl text-foreground">
+        <h2 className="mt-2 text-4xl font-bold tracking-tight text-foreground">
           Images to knowledge
         </h2>
-        <p className="mt-6 text-lg leading-8 text-muted-foreground">
+        <p className="mt-6 text-lg/6 text-muted-foreground">
           Pixno transforms your smartphone into an AI-powered note-taking tool. Capture, organize, and enhance your ideas—all from your pocket.
         </p>
       </div>

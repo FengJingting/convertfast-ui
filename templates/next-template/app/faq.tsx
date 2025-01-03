@@ -50,7 +50,7 @@ export const FAQ: FC<{items?: FAQItem[]}> = (props) => {
     setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
   };
   return (
-    <section className="bg-gradient-to-t from-zinc-50 to-white dark:from-zinc-950 to-black">
+    <section className="bg-gradient-to-t">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
         <div className="mx-auto max-w-4xl">
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl text-center mb-2">
@@ -72,7 +72,7 @@ export const FAQ: FC<{items?: FAQItem[]}> = (props) => {
                 key={index}
                 value={`item-${index}`}
                 className={`rounded-lg shadow-sm border ${
-                  activeIndex === index ? "bg-stone-300 dark:bg-stone-700" : "bg-stone-50 dark:bg-stone-950"
+                  activeIndex === index ? "bg-accent" : "bg-white dark:bg-black"
                 }`}
               >
                 <AccordionTrigger
