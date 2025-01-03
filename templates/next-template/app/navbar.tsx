@@ -139,8 +139,6 @@ export function Navbar() {
               <AvatarFallback>Emily Chen</AvatarFallback>
             </Avatar>
           </a>
-
-          
         </div>
       </div>
     </header>

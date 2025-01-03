@@ -32,7 +32,7 @@ const DEFAULT_ITEMS: FeatureItemProps[] = [
   },
 ];
 
-const FeatureItem: FC<FeatureItemProps & { index: number }> = ({ title, description, imageUrl, isImageLeft, index }) => (
+const FeatureItem: FC<FeatureItemProps> = ({ title, description, imageUrl, isImageLeft }) => (
   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-24 items-center">
     {isImageLeft && (
       <div className="relative order-1 md:order-1">
@@ -78,8 +78,8 @@ export const FeatureSection: FC = () => {
         </p>
       </div>
       <div className="mt-8 flex flex-col gap-16">
-        {DEFAULT_ITEMS.map((feature, index) => (
-          <FeatureItem key={index} {...feature} index={index} />
+        {DEFAULT_ITEMS.map((feature) => (
+          <FeatureItem key={feature.title} {...feature} />
         ))}
       </div>
     </div>
